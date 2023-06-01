@@ -30,7 +30,7 @@ Note: Considers "chandrakkala" at the end of a word as the "half-u" or "samvruth
 
    Output:
    ```
-   kolḷāṁ, ñān malayāḷaṁ vāyikkukayāṇ
+   koḷḷāṁ, ñān malayāḷaṁ vāyikkukayāṇŭ
    ```
 
 ## Contributing
