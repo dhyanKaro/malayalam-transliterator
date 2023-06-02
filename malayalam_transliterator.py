@@ -29,6 +29,7 @@ transliteration_mappings = {
     'ൊ': 'o',
     'ോ': 'ō',
     'ൌ': 'au',
+    'ൗ': 'au',
     'അ': 'a',
     'ആ': 'ā',
     'ഇ': 'i',
@@ -108,7 +109,7 @@ def transliterate_malayalam(text):
                 transliterated_text += 'ṯṯ'
 
             next_char = text[i + 3] if i + 3 < len(text) else None
-            if not is_diacritic(next_char) and next_char != '\u0D4D':
+            if next_char and not is_diacritic(next_char) and next_char != '\u0D4D':
                 transliterated_text += 'a'
             i += 3
 
