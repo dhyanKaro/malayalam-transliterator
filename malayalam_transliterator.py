@@ -87,6 +87,8 @@ transliteration_mappings = {
     'ം': 'ṁ',
 }
 
+valid_punctuation = {' ', '.', ',', ';', '(', ')', '[', ']', '{', '}', '"', "'", '`', '/', '\\', '&', '@', '#', '$'}
+
 
 def is_diacritic(char):
     if char == '\u0D02':
@@ -128,7 +130,7 @@ def transliterate_malayalam(text):
 
         # Check for chandrakkala (virama)
         elif char == '\u0D4D':
-            if i == len(text) - 1 or text[i + 1] == ' ':  # saṁvr̥tōkāram
+            if i == len(text) - 1 or text[i + 1] in valid_punctuation:  # saṁvr̥tōkāram
                 transliterated_text += 'ŭ'
             i += 1
 
