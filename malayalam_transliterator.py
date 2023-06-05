@@ -1,3 +1,4 @@
+import string
 import unicodedata
 
 # Define the transliteration mappings
@@ -87,7 +88,9 @@ transliteration_mappings = {
     'ം': 'ṁ',
 }
 
-valid_punctuation = {' ', '.', ',', ';', '!', '?', '-', '(', ')', '[', ']', '{', '}', '"', "'", '`', '/', '\\', '&', '@', '#', '$'}
+punctuation_set = set(string.punctuation)
+whitespace_set = set(string.whitespace)
+word_end_markers = punctuation_set.union(whitespace_set)
 
 
 def is_diacritic(char):
@@ -130,7 +133,7 @@ def transliterate_malayalam(text):
 
         # Check for chandrakkala (virama)
         elif char == '\u0D4D':
-            if i == len(text) - 1 or text[i + 1] in valid_punctuation:  # saṁvr̥tōkāram
+            if i == len(text) - 1 or text[i + 1] in word_end_markers:  # saṁvr̥tōkāram
                 transliterated_text += 'ŭ'
             i += 1
 
