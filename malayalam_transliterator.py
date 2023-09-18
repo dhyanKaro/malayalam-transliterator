@@ -88,9 +88,13 @@ transliteration_mappings = {
     'ം': 'ṁ',
 }
 
+# Set of characters that mark the end of a word
 punctuation_set = set(string.punctuation)
 whitespace_set = set(string.whitespace)
 word_end_markers = punctuation_set.union(whitespace_set)
+# Zero-width non-joiner
+zwnj = chr(8204)
+word_end_markers.add(zwnj)
 
 
 def is_diacritic(char):
@@ -132,7 +136,7 @@ def transliterate_malayalam(text):
             i += 1
 
         # Check for chandrakkala (virama)
-        elif char == '\u0D4D':
+        elif char == '\u0D4D':  # ്
             if i == len(text) - 1 or text[i + 1] in word_end_markers:  # saṁvr̥tōkāram
                 transliterated_text += 'ŭ'
             i += 1
@@ -142,3 +146,11 @@ def transliterate_malayalam(text):
             i += 1
 
     return transliterated_text
+
+
+if __name__ == '__main__':
+    while True:
+        text = input("Enter malayalam text to transliterate:\n")
+        if text.strip() == '':
+            break
+        print(transliterate_malayalam(text))
