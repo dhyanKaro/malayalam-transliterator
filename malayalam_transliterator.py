@@ -102,7 +102,7 @@ def is_diacritic(char):
     return category.startswith('M')
 
 
-def transliterate_malayalam(text):
+def transliterate(text):
     transliterated_text = ''
     i = 0
     while i < len(text):

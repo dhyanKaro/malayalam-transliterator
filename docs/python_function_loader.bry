@@ -1,13 +1,10 @@
 from browser import document
 
-from sys import path
-parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-sys.path.append(parent_dir)
-import malayalam_transliterator
+import transliterator_min
 
 def update_output(ev):
     input_text = document['inputText'].value
-    transliterated_text = malayalam_transliterator.transliterate_malayalam(input_text)
+    transliterated_text = transliterator_min.transliterate(input_text)
     document['outputText'].value = transliterated_text
 
 
