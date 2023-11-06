@@ -1,0 +1,32 @@
+
+body.dark-mode {
+  background-color: var(--theme-background-dark);
+  color: var(--theme-text);
+}
+
+.navbar.dark-mode {
+  background-color: var(--theme-background-dark);
+  color: var(--theme-narange);
+  border-bottom: 1px solid var(--theme-high);
+}
+
+textarea.dark-mode {
+  background: var(--theme-background-dark);
+  border: 1px solid var(--theme-high);
+  color: var(--theme-text);
+}
+
+.navbar.dark-mode h2 {
+  color: var(--theme-text);
+}
+
+.buttons.dark-mode {
+  color: var(--theme-text);
+}
+
+body.dark-mode footer a{
+  color: var(--theme-background);
+}
+body.dark-mode footer a:hover {
+  color: var(--theme-high);
+}

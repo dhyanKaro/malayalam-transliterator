@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="./css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="./css/dark-mode.css" rel="stylesheet" type="text/css" id="dark-mode-stylesheet" />
+    <title>Malayalam Transliterator</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython_stdlib.js"></script>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <h2>Malayalam Transliterator!</h2>
+    </div>
+    <section>
+      <textarea class='texty' id="inputText" spellcheck="false" placeholder="Enter Malayalam text..."></textarea>
+      <div class="tools">
+        <button id="copy-button" class="buttons" onclick="copyFunction()">
+          <i class="fas fa-clipboard"></i> Copy </button>
+        <button id="clear-button" class="buttons" onclick="clearFunction()">
+          <i class="fas fa-trash"></i> Clear </button>
+      </div>
+      <textarea class='texty' id="outputText" spellcheck="false" autocomplete="off"></textarea>
+    </section>
+    <script src="./js/main.js?v=123"></script>
+    <script type="text/python" src="python_function_loader.bry?v=123"></script>
+    <script src="https://kit.fontawesome.com/37719135fc.js" crossorigin="anonymous"></script>
+  </body>
+  <footer>
+      <a href="https://github.com/dhyanKaro/malayalam-transliterator" target="_blank">View Source</a>
+  </footer>
+</html>

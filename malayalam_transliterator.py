@@ -1,4 +1,3 @@
-import string
 import unicodedata
 
 # Define the transliteration mappings
@@ -89,13 +88,12 @@ transliteration_mappings = {
 }
 
 # Set of characters that mark the end of a word
-punctuation_set = set(string.punctuation)
-whitespace_set = set(string.whitespace)
+punctuation_set = set(r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~""")
+whitespace_set = set(' \t\n\r\v\f')
 word_end_markers = punctuation_set.union(whitespace_set)
 # Zero-width non-joiner
 zwnj = chr(8204)
 word_end_markers.add(zwnj)
-
 
 def is_diacritic(char):
     if char == '\u0D02':
@@ -124,7 +122,7 @@ def transliterate_malayalam(text):
 
         elif char in transliteration_mappings:
             transliterated_text += transliteration_mappings[char]
-            # a ...
+            # 'a' follows most letters, unless its one of the following
             if not is_diacritic(char) and char not in vowels_exclude and (
                     i + 1 == len(text) or not is_diacritic(text[i + 1]) and text[i + 1] != '\u0D4D'):
                 transliterated_text += 'a'
@@ -141,7 +139,7 @@ def transliterate_malayalam(text):
                 transliterated_text += 'ŭ'
             i += 1
 
-        else:
+        else:  # If we weren't able to map it to something, we just copy it
             transliterated_text += char
             i += 1
 

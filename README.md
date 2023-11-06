@@ -1,16 +1,25 @@
+
 # Malayalam Transliterator
 
 The Malayalam Transliterator is a Python program that provides a function to transliterate Malayalam text into a Latin script representation following the ISO-15919 standard. It converts Malayalam characters into their corresponding phonetic Latin script equivalents.
 
+## Try It Online
+
+You can try out the Malayalam Transliterator online by visiting our web app. Simply go to the following URL:
+
+[Malayalam Transliterator Web App](web_app_url_here)
+
 ## Features
 
-- Transliteration of Malayalam text into Latin script following ISO-15919
+- Transliteration of Malayalam text into Latin script following the ISO-15919 standard
 - Support for various diacritic marks and ligatures
 - Handles special cases like chillu characters and virama (chandrakkala)
-
+- Ignores archaic characters which probably no one will notice
 Note: Considers "chandrakkala" at the end of a word as the "half-u" or "samvruthokaram" sound instead of acting as a virama
 
 ## Usage
+
+If you prefer to use the Malayalam Transliterator as a Python library, you can follow these steps:
 
 1. Ensure you have Python 3 installed on your machine.
 
