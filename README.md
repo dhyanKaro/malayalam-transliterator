@@ -7,7 +7,7 @@ The Malayalam Transliterator is a Python program that provides a function to tra
 
 You can try out the Malayalam Transliterator online by visiting our web app. Simply go to the following URL:
 
-[Malayalam Transliterator Web App](web_app_url_here)
+[Malayalam Transliterator Web App](https://dhyankaro.github.io/malayalam-transliterator/)
 
 ## Features
 
