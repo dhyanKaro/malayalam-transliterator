@@ -7,11 +7,11 @@
     <link href="./css/styles.css" rel="stylesheet" type="text/css" />
     <link href="./css/dark-mode.css" rel="stylesheet" type="text/css" id="dark-mode-stylesheet" />
     <title>Malayalam Transliterator</title>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython_stdlib.js"></script>
+    <script src="https://kit.fontawesome.com/37719135fc.js" crossorigin="anonymous"></script>
+
   </head>
 
-  <body>
+  <body onload="brython()" >
     <div class="navbar">
       <h2>Malayalam Transliterator!</h2>
     </div>
@@ -25,9 +25,22 @@
       </div>
       <textarea class='texty' id="outputText" spellcheck="false" autocomplete="off"></textarea>
     </section>
-    <script src="./js/main.js?v=123"></script>
     <script type="text/python" src="python_function_loader.bry?v=123"></script>
-    <script src="https://kit.fontawesome.com/37719135fc.js" crossorigin="anonymous"></script>
+    <script src="./js/main.js?v=123"></script>
+    <!-- Load the javascript loader functions.
+         When brython is done initializing everything,
+         it emits a signal "brython_done" that a handler in loader.js
+         captures and removes the loading blocker.
+     -->
+    <script src="./js/loader.js"></script>
+
+    <script type="text/javascript">update_loader_message("Loading...");</script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
+
+    <script type="text/javascript">update_loader_message("Loading more...")</script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython_stdlib.js"></script>
+
+    <script type="text/javascript">update_loader_message("...")</script>
   </body>
   <footer>
       <a href="https://github.com/dhyanKaro/malayalam-transliterator" target="_blank">View Source</a>
