@@ -21,19 +21,19 @@ Note: Considers "chandrakkala" at the end of a word as the "half-u" or "samvruth
 
 If you prefer to use the Malayalam Transliterator as a Python library, you can follow these steps:
 
-1. Ensure you have Python 3 installed on your machine.
+1. Ensure you have Python 3 installed.
 
-2. Clone this repository to your local machine or download the `transliterator.py` file.
+2. Clone this repository to your local machine or download the `malayalam_transliterator.py` file.
 
-3. Import the `transliterate_malayalam` function from `transliterator.py` into your Python program.
+3. Import the `transliterate` function from `malayalam_transliterator.py` into your Python program.
 
-4. Call the `transliterate_malayalam` function and pass the Malayalam text as a parameter. It will return the transliterated text.
+4. Call the `transliterate` function and pass the Malayalam text as a parameter. It will return the transliterated text.
 
    ```python
-   from transliterator import transliterate_malayalam
+   from malayalam_transliterator import transliterate
 
    text = 'കൊള്ളാം, ഞാൻ മലയാളം വായിക്കുകയാണ്'
-   transliterated_text = transliterate_malayalam(text)
+   transliterated_text = transliterate(text)
    print(transliterated_text)
    ```
 

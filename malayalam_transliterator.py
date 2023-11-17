@@ -13,6 +13,19 @@ chillu = {
     'ൿ': 'k',
 }
 
+two_part_vowel_signs = {  # aka circumgraphs
+    ('െ', 'ാ'): 'ൊ',
+    ('ാ', 'െ'): 'ൊ',
+
+    ('േ', 'ാ'): 'ോ',
+    ('ാ', 'േ'): 'ോ',
+
+    ('െ', 'ൗ'): 'ൌ',
+    ('ൗ', 'െ'): 'ൌ',
+
+    ('െ', 'െ'): 'ൈ',
+}
+
 transliteration_mappings = {
     'ാ': 'ā',
     'ി': 'i',
@@ -28,8 +41,9 @@ transliteration_mappings = {
     'ൈ': 'ai',
     'ൊ': 'o',
     'ോ': 'ō',
-    'ൌ': 'au',
-    'ൗ': 'au',
+    'ൌ': 'au',  # 0D4C (archaic)
+    'ൗ': 'au',  # 0D57
+
     'അ': 'a',
     'ആ': 'ā',
     'ഇ': 'i',
@@ -46,6 +60,7 @@ transliteration_mappings = {
     'ഒ': 'o',
     'ഓ': 'ō',
     'ഔ': 'au',
+
     'ക': 'k',
     'ഖ': 'kh',
     'ഗ': 'g',
@@ -85,6 +100,17 @@ transliteration_mappings = {
     'സ': 's',
     'ഹ': 'h',
     'ം': 'ṁ',
+
+    '൦': '0',
+    '൧': '1',
+    '൨': '2',
+    '൩': '3',
+    '൪': '4',
+    '൫': '5',
+    '൬': '6',
+    '൭': '7',
+    '൮': '8',
+    '൯': '9',
 }
 
 # Set of characters that mark the end of a word
@@ -120,22 +146,32 @@ def transliterate(text):
                 transliterated_text += 'a'
             i += 3
 
+        # Check for two-part dependent vowel signs
+        elif i + 1 < len(text) and (char, text[i + 1]) in two_part_vowel_signs:
+            transliterated_text += transliteration_mappings[two_part_vowel_signs[(char, text[i + 1])]]
+            i += 2
+
         elif char in transliteration_mappings:
             transliterated_text += transliteration_mappings[char]
             # 'a' follows most letters, unless its one of the following
+            # todo: put a comment here which explains whats going on here, because I can't even remember now
             if not is_diacritic(char) and char not in vowels_exclude and (
                     i + 1 == len(text) or not is_diacritic(text[i + 1]) and text[i + 1] != '\u0D4D'):
                 transliterated_text += 'a'
 
             i += 1
 
+        # Check for chillus characters
         elif char in chillu:
             transliterated_text += chillu[char]
             i += 1
 
         # Check for chandrakkala (virama)
         elif char == '\u0D4D':  # ്
-            if i == len(text) - 1 or text[i + 1] in word_end_markers:  # saṁvr̥tōkāram
+            # saṁvr̥tōkāram
+            if i == len(text) - 1 \
+                    or text[i + 1] in word_end_markers \
+                    or unicodedata.category(text[i + 1]).startswith('Z'):  # All unicode separators
                 transliterated_text += 'ŭ'
             i += 1
 
@@ -151,4 +187,4 @@ if __name__ == '__main__':
         text = input("Enter malayalam text to transliterate:\n")
         if text.strip() == '':
             break
-        print(transliterate_malayalam(text))
+        print(transliterate(text))
